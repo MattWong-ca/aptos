@@ -348,42 +348,13 @@ app.frame('/phrases', (c) => {
 app.frame('/quiztime', (c) => {
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background: 'black',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '40px',
-          justifyContent: 'center',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '8px' }}>
-          <Text
-            font="default"
-            size="64"
-            weight="700"
-            color="white"
-          >
-            Quiz Time!
-          </Text>
-        </div>
-
-        {/* Subtitle */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="400"
-            color="white"
-          >
-            4 questions
-          </Text>
-        </div>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/quiztime.png`}  />
       </div>
     ),
     intents: [
@@ -413,7 +384,7 @@ app.frame('/q1', (c) => {
           flexDirection: 'column',
           height: '100%',
           width: '100%',
-          padding: '40px',
+          padding: '60px',
         }}
       >
         {/* Title */}
@@ -539,7 +510,7 @@ app.frame('/q2', (c) => {
           flexDirection: 'column',
           height: '100%',
           width: '100%',
-          padding: '40px',
+          padding: '60px',
         }}
       >
         {/* Title */}
@@ -665,7 +636,7 @@ app.frame('/q3', (c) => {
           flexDirection: 'column',
           height: '100%',
           width: '100%',
-          padding: '40px',
+          padding: '60px',
         }}
       >
         {/* Title */}
@@ -735,7 +706,7 @@ app.frame('/q4', (c) => {
           flexDirection: 'column',
           height: '100%',
           width: '100%',
-          padding: '40px',
+          padding: '60px',
         }}
       >
         {/* Title */}
@@ -792,52 +763,25 @@ app.frame('/points', (c) => {
   }
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background: 'black',
-          backgroundSize: '100% 100%',
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/points.png`}  />
+        <div style={{
+          color: '#004aad',
+          position: 'absolute',
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '40px',
-          justifyContent: 'center',
-          lineHeight: '0.9',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex' }}>
-          <Text
-            font="default"
-            size="64"
-            weight="700"
-            color="white"
-          >
-            {`+${state.points}`}
-          </Text>
-        </div>
-
-        {/* Subtitle */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="400"
-            color="white"
-          >
-            points!
-          </Text>
-        </div>
-        <div style={{ display: 'flex', marginTop: '50px' }}>
-          <Text
-            font="default"
-            size="18"
-            weight="400"
-            color="white"
-          >
-            {`You're now at ${state.points} points for the week!`}
-          </Text>
+          alignItems: 'center',
+          top: '39%',
+          left: '52%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <div style={{ fontSize: '130px', fontWeight: 'bold', paddingRight: '15px', marginBottom: '-55px' }}>{`+${state.points}`}</div>
+          <div style={{ fontSize: '55px', paddingLeft: '15px' }}>{`points`}</div>
         </div>
       </div>
     ),
