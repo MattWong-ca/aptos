@@ -1,16 +1,21 @@
 {
-  "name": "frames",
+  "name": "lingocaster-aptos",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "frog dev"
+    "build": "frog vercel-build",
+    "dev": "frog dev",
+    "deploy": "vercel"
   },
   "dependencies": {
-    "@hono/node-server": "latest",
+    "@neynar/nodejs-sdk": "^1.16.1",
+    "dotenv": "^16.4.5",
     "frog": "latest",
-    "hono": "^4"
+    "hono": "^4",
+    "openai": "^4.61.0"
   },
   "devDependencies": {
-    "typescript": "latest"
+    "@types/bun": "latest",
+    "bun": "latest"
   }
 }
