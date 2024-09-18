@@ -66,60 +66,13 @@ app.frame('/', (c) => {
   return c.res({
     action: '/translation',
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background: 'black',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'nowrap',
-          height: '100%',
-          justifyContent: 'center',
-          textAlign: 'center',
-          width: '100%',
-          padding: '20px',
-        }}
-      >
-        {/* Circular image */}
-        <div style={{
-          borderRadius: '50%',
-          display: 'flex',
-          width: '160px',
-          height: '160px',
-          overflow: 'hidden',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          <Image src="/lingocaster.png" />
-        </div>
-
-        {/* Title */}
-        <div
-          style={{
-            display: 'flex',
-            color: 'white',
-            fontSize: '36px',
-            fontWeight: 'bold',
-            marginBottom: '15px',
-          }}
-        >
-          <Text size="48" weight="700">Lingocaster</Text>
-        </div>
-
-        {/* Subtitle */}
-        <div
-          style={{
-            display: 'flex',
-            color: 'white',
-            fontSize: '18px',
-            marginBottom: '30px',
-            maxWidth: '85%',
-          }}
-        >
-          <Text size="20" font="manrope" weight="400">Learn a new language from real post translations!</Text>
-
-        </div>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/intro.png`}  />
       </div>
     ),
     intents: [
@@ -241,7 +194,7 @@ app.frame('/translation', async (c) => {
 
 app.frame('/phrases', (c) => {
   const { deriveState } = c;
-  const state = deriveState((previousState) => {});
+  const state = deriveState((previousState) => { });
 
   const phraseTranslation = state.openaiResponse?.phrase_translation || {};
   const firstEntry = Object.entries(phraseTranslation)[0] || ['', ''];
