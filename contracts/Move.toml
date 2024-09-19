@@ -1,15 +1,11 @@
 [package]
-name = "BettingContract"
-version = "1.0.0"
-authors = []
-
+name = "Examples"
+version = "0.0.0"
+ 
 [addresses]
-
-[dev-addresses]
-
+bet_addr = "_"
+ 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-core.git"
 rev = "mainnet"
 subdir = "aptos-move/framework/aptos-framework"
-
-[dev-dependencies]
