@@ -6,21 +6,21 @@ import { TransferAPT } from './TransferAPT';
 const Dashboard: React.FC = () => {
     const { connected } = useWallet();
 
-  return (
-    <div className="flex items-center justify-center flex-col h-full">
+    return (
+        <div className="flex items-center justify-center flex-col h-full">
             {connected ? (
-              <Card>
-                <CardContent className="flex flex-col gap-10 pt-6">
-                  <TransferAPT />
-                </CardContent>
-              </Card>
+                <Card>
+                    <CardContent className="flex flex-col gap-10 pt-6">
+                        <TransferAPT />
+                    </CardContent>
+                </Card>
             ) : (
-              <CardHeader>
-                <CardTitle>To get started Connect a wallet</CardTitle>
-              </CardHeader>
+                <CardHeader>
+                    <CardTitle>To get started Connect a wallet</CardTitle>
+                </CardHeader>
             )}
-          </div>
-  );
+        </div>
+    );
 };
 
 export default Dashboard;

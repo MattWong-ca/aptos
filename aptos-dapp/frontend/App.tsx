@@ -9,7 +9,7 @@ function App() {
 
   return (
     <Router>
-      <div className="h-screen overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/path/to/your/image.jpg')" }}>
+      <div className="h-screen overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/path/to/your/image.jpg')", fontFamily: 'Poppins, sans-serif' }}>
         <Navbar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
         <div className="pt-16"> {/* Add padding-top to account for fixed navbar */}
           <Routes>
