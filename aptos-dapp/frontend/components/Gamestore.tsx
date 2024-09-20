@@ -1,7 +1,11 @@
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from './ui/use-toast';
+import { aptosClient } from '@/utils/aptosClient';
+import { transferAPT } from '@/entry-functions/transferAPT';
 
 interface GameItem {
     id: number;
@@ -14,11 +18,41 @@ interface GameItem {
 const gameItems: GameItem[] = [
     { id: 1, image: '/streakfreeze.webp', title: 'Streak Freeze', subtitle: 'Protect your streak with a 1-day freeze', price: 5 },
     { id: 2, image: '/ads.webp', title: 'Ad Removal', subtitle: 'Enjoy ad-free gaming for the next 30 days', price: 8 },
-    { id: 2, image: '/double.webp', title: 'Double Points', subtitle: 'Get double points for the next 7 days', price: 10 }
+    { id: 3, image: '/double.webp', title: 'Double Points', subtitle: 'Get double points for the next 7 days', price: 10 }
 ];
 
 const Gamestore: React.FC = () => {
-    const { connected } = useWallet();
+    const { connected, account, signAndSubmitTransaction } = useWallet();
+    const [transferAmount, setTransferAmount] = useState<number>();
+    const queryClient = useQueryClient();
+
+    const onClickButton = async (price: number) => {
+        setTransferAmount(price);
+        if (!account || !transferAmount) {
+          return;
+        }
+    
+        try {
+          const committedTransaction = await signAndSubmitTransaction(
+            transferAPT({
+              to: "0x8ab10f7c9d5ffefd13e48a6ca3408cc82956b355434141b054461ba1222cb23f",
+              // APT is 8 decimal places
+              amount: Math.pow(10, 8) * transferAmount,
+            }),
+          );
+          const executedTransaction = await aptosClient().waitForTransaction({
+            transactionHash: committedTransaction.hash,
+          });
+          queryClient.invalidateQueries();
+          toast({
+            title: "Success",
+            description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
+          });
+    
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
     return (
         <div className="flex items-center justify-center flex-col h-full mt-20">
@@ -38,7 +72,7 @@ const Gamestore: React.FC = () => {
                                     <p className="text-sm text-gray-600 mb-2">{item.subtitle}</p>
                                     <p className="text-md font-bold mb-4">{item.price} APT</p>
                                     </div>
-                                    <Button className="mx-4">Purchase</Button>
+                                    <Button onClick={() => onClickButton(item.price)} value={item.price} className="mx-4">Purchase</Button>
                                 </Card>
                             ))}
                         </div>
