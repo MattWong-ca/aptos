@@ -14,7 +14,7 @@ export function TransferAPT() {
   const queryClient = useQueryClient();
 
   const [aptBalance, setAptBalance] = useState<number>(0);
-  const [recipient, setRecipient] = useState<string>();
+  const [friendUsername, setFriendUsername] = useState<string>();
   const [transferAmount, setTransferAmount] = useState<number>();
 
   const { data } = useQuery({
@@ -45,14 +45,14 @@ export function TransferAPT() {
   });
 
   const onClickButton = async () => {
-    if (!account || !recipient || !transferAmount) {
+    if (!account || !transferAmount) {
       return;
     }
 
     try {
       const committedTransaction = await signAndSubmitTransaction(
         transferAPT({
-          to: recipient,
+          to: "0x8ab10f7c9d5ffefd13e48a6ca3408cc82956b355434141b054461ba1222cb23f",
           // APT is 8 decimal places
           amount: Math.pow(10, 8) * transferAmount,
         }),
@@ -65,6 +65,9 @@ export function TransferAPT() {
         title: "Success",
         description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
       });
+
+      // Neynar bot
+      // use friendUsername
     } catch (error) {
       console.error(error);
     }
@@ -77,16 +80,22 @@ export function TransferAPT() {
   }, [data]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <h4 className="text-lg font-medium">APT balance: {(aptBalance / Math.pow(10, 8)).toFixed(2)}</h4>
-      Recipient <Input disabled={!account} placeholder="0x1" onChange={(e) => setRecipient(e.target.value)} />
-      Amount{" "}
-      <Input disabled={!account} placeholder="100" onChange={(e) => setTransferAmount(parseFloat(e.target.value))} />
+    <div className="flex flex-col gap-6" style={{ width: '80%' }}>
+      <h1 className="text-2xl font-bold mt-8">Challenge a Friend</h1>
+      <h4 className="text-md font-medium" style={{ marginTop: '-12px' }}>Think you'll have more points then a friend? Challenge them!</h4>
+
+      <h4 className="text-md font-medium" style={{ marginTop: '8px' }}>Your APT balance: {(aptBalance / Math.pow(10, 8)).toFixed(2)}</h4>
+      <h4 className="text-md font-medium" style={{ marginTop: '12px' }}>Who are you challenging?</h4> 
+      <Input style={{ marginTop: '-18px' }} disabled={!account} placeholder="0xMatt" onChange={(e) => setFriendUsername(e.target.value)} />
+      <h4 className="text-md font-medium" style={{ marginTop: '1px' }}>How much?</h4> 
+
+      <Input  style={{ marginTop: '-18px' }} disabled={!account} placeholder="100" onChange={(e) => setTransferAmount(parseFloat(e.target.value))} />
       <Button
-        disabled={!account || !recipient || !transferAmount || transferAmount > aptBalance || transferAmount <= 0}
+        style={{ marginTop: '18px' }}
+        disabled={!account || !transferAmount || transferAmount > aptBalance || transferAmount <= 0}
         onClick={onClickButton}
       >
-        Transfer
+        Challenge
       </Button>
     </div>
   );
