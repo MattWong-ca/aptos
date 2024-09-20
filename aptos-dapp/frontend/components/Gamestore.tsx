@@ -31,7 +31,7 @@ const Gamestore: React.FC = () => {
                         </div>
                         <div className="grid grid-cols-3 gap-4">
                             {gameItems.map((item) => (
-                                <Card key={item.id} className="flex flex-col transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" style={{ height: '340px' }}>
+                                <Card key={item.id} className="flex flex-col transition-all duration-300 ease-in-out  hover:scale-105 " style={{ height: '340px' }}>
                                     <img src={item.image} alt={item.title} className="h-42 object-cover mb-4 rounded-t-md"/>
                                     <div className="pl-4 pr-4">
                                     <h3 className="text-lg font-semibold">{item.title}</h3>
