@@ -72,7 +72,7 @@ app.frame('/', (c) => {
         height: '100%',
         overflow: 'hidden'
       }}>
-        <Image src={`/intro.png`}  />
+        <Image src={`/intro.png`} />
       </div>
     ),
     intents: [
@@ -136,47 +136,35 @@ app.frame('/translation', async (c) => {
   return c.res({
     action: '/phrases',
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '40px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <Text
-            font="default"
-            size="32"
-            weight="700"
-            color="white"
-          >
-            Translation:
-          </Text>
-        </div>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/translation.png`} />
 
         {/* White rounded rectangle */}
         <div
           style={{
             display: 'flex',
             background: 'white',
-            borderRadius: '15px',
+            borderRadius: '25px',
             lineHeight: '1',
             flexGrow: 1,
-            padding: '20px',
-            width: '100%',
+            padding: '23px',
+            width: '1075px',
+            height: '425px',
+            position: 'absolute',
+            margin: '63px',
+            top: '12%'
           }}
         >
           {/* Blue sample text */}
           <div style={{ display: 'flex', color: 'black' }}>
             <Text
               font="default"
-              size="20"
+              size="18"
               color="blue"
             >
               {translation}
@@ -211,29 +199,13 @@ app.frame('/phrases', (c) => {
 
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '40px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '10px' }}>
-          <Text
-            font="default"
-            size="32"
-            weight="700"
-            color="white"
-          >
-            Important words/phrases:
-          </Text>
-        </div>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/phrases.png`} />
 
         {/* White rounded rectangle */}
         <div
@@ -241,13 +213,18 @@ app.frame('/phrases', (c) => {
             display: 'flex',
             flexDirection: 'column',
             background: 'white',
-            borderRadius: '15px',
+            borderRadius: '25px',
+            lineHeight: '1',
             flexGrow: 1,
-            padding: '20px',
-            width: '100%',
-            overflowY: 'auto',
+            padding: '23px',
+            width: '1075px',
+            height: '425px',
+            position: 'absolute',
+            margin: '63px',
+            top: '12%'
           }}
         >
+
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
@@ -354,7 +331,7 @@ app.frame('/quiztime', (c) => {
         height: '100%',
         overflow: 'hidden'
       }}>
-        <Image src={`/quiztime.png`}  />
+        <Image src={`/quiztime.png`} />
       </div>
     ),
     intents: [
@@ -375,106 +352,109 @@ app.frame('/q1', (c) => {
   return c.res({
     action: '/q2',
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/question.png`} />
+
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '60px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '20px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="700"
-            color="white"
-          >
-            {q1}
-          </Text>
-        </div>
+          position: 'absolute',
+          padding: '65px',
+        }}>
+          {/* Title */}
+          <div style={{ display: 'flex', marginBottom: '20px' }}>
+            <Text
+              font="default"
+              size="24"
+              weight="700"
+              color="white"
+            >
+              {q1}
+            </Text>
+          </div>
 
-        {/* Answer options */}
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+          {/* Answer options */}
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%'
+            }}
           >
-            {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
-          </Text>
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+            </Text>
+          </div>
         </div>
       </div>
     ),
@@ -501,106 +481,109 @@ app.frame('/q2', (c) => {
   return c.res({
     action: '/q3',
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/question.png`} />
+
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '60px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '20px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="700"
-            color="white"
-          >
-            {q2}
-          </Text>
-        </div>
+          position: 'absolute',
+          padding: '65px',
+        }}>
+          {/* Title */}
+          <div style={{ display: 'flex', marginBottom: '20px' }}>
+            <Text
+              font="default"
+              size="24"
+              weight="700"
+              color="white"
+            >
+              {q2}
+            </Text>
+          </div>
 
-        {/* Answer options */}
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+          {/* Answer options */}
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%'
+            }}
           >
-            {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 0)}. ${answers[0]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 1)}. ${answers[1]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            marginBottom: '15px',
-            marginLeft: '20px',
-            borderRadius: '10px',
-            padding: '10px',
-            width: '100%',
-          }}
-        >
-          <Text
-            font="manrope"
-            weight="500"
-            size="18"
-            color="white"
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 2)}. ${answers[2]}`}
+            </Text>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              marginBottom: '15px',
+              marginLeft: '20px',
+              borderRadius: '10px',
+              padding: '10px',
+              width: '100%',
+            }}
           >
-            {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
-          </Text>
+            <Text
+              font="manrope"
+              weight="500"
+              size="18"
+              color="white"
+            >
+              {`${String.fromCharCode(97 + 3)}. ${answers[3]}`}
+            </Text>
+          </div>
         </div>
       </div>
     ),
@@ -627,53 +610,56 @@ app.frame('/q3', (c) => {
   return c.res({
     action: '/q4',
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/question.png`} />
+
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '60px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '20px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="700"
-            color="white"
-          >
-            {q3}
-          </Text>
-        </div>
-
-        {/* Answer options */}
-        {answerOptions.map((option, index) => (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
-          >
+          position: 'absolute',
+          padding: '65px',
+        }}>
+          {/* Title */}
+          <div style={{ display: 'flex', marginBottom: '20px' }}>
             <Text
-              font="manrope"
-              weight="500"
-              size="18"
+              font="default"
+              size="24"
+              weight="700"
               color="white"
             >
-              {`${String.fromCharCode(97 + index)}. ${option}`}
+              {q3}
             </Text>
           </div>
-        ))}
+
+          {/* Answer options */}
+          {answerOptions.map((option, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                marginBottom: '15px',
+                marginLeft: '20px',
+                borderRadius: '10px',
+                padding: '10px',
+                width: '100%',
+              }}
+            >
+              <Text
+                font="manrope"
+                weight="500"
+                size="18"
+                color="white"
+              >
+                {`${String.fromCharCode(97 + index)}. ${option}`}
+              </Text>
+            </div>
+          ))}
+        </div>
       </div>
     ),
     intents: [
@@ -697,53 +683,56 @@ app.frame('/q4', (c) => {
   return c.res({
     action: '/points',
     image: (
-      <div
-        style={{
-          alignItems: 'flex-start',
-          background: '#58CC02',
-          backgroundSize: '100% 100%',
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/question.png`} />
+
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '60px',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '20px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="700"
-            color="white"
-          >
-            {q4}
-          </Text>
-        </div>
-
-        {/* Answer options */}
-        {answerOptions.map((option, index) => (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              marginBottom: '15px',
-              marginLeft: '20px',
-              borderRadius: '10px',
-              padding: '10px',
-              width: '100%',
-            }}
-          >
+          position: 'absolute',
+          padding: '65px',
+        }}>
+          {/* Title */}
+          <div style={{ display: 'flex', marginBottom: '20px' }}>
             <Text
-              font="manrope"
-              weight="500"
-              size="18"
+              font="default"
+              size="24"
+              weight="700"
               color="white"
             >
-              {`${String.fromCharCode(97 + index)}. ${option}`}
+              {q4}
             </Text>
           </div>
-        ))}
+
+          {/* Answer options */}
+          {answerOptions.map((option, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                marginBottom: '15px',
+                marginLeft: '20px',
+                borderRadius: '10px',
+                padding: '10px',
+                width: '100%',
+              }}
+            >
+              <Text
+                font="manrope"
+                weight="500"
+                size="18"
+                color="white"
+              >
+                {`${String.fromCharCode(97 + index)}. ${option}`}
+              </Text>
+            </div>
+          ))}
+        </div>
       </div>
     ),
     intents: [
@@ -769,7 +758,7 @@ app.frame('/points', (c) => {
         height: '100%',
         overflow: 'hidden'
       }}>
-        <Image src={`/points.png`}  />
+        <Image src={`/points.png`} />
         <div style={{
           color: '#004aad',
           position: 'absolute',
@@ -781,7 +770,7 @@ app.frame('/points', (c) => {
           transform: 'translate(-50%, -50%)',
         }}>
           <div style={{ fontSize: '130px', fontWeight: 'bold', paddingRight: '15px', marginBottom: '-55px' }}>{`+${state.points}`}</div>
-          <div style={{ fontSize: '55px', paddingLeft: '15px' }}>{`points`}</div>
+          <div style={{ fontSize: '55px', paddingLeft: '13px' }}>{`points!`}</div>
         </div>
       </div>
     ),
@@ -795,37 +784,22 @@ app.frame('/streak', (c) => {
   const num = 1;
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background: '#e9e0cb',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '20px',
-        }}
-      >
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+        <Image src={`/${num}.png`} />
         <div style={{
-          display: 'flex',
-          width: '100%',
-          overflow: 'hidden'
-        }}>
-          <Image src={`/${num}.png`} />
-        </div>
-
-        {/* Subtitle */}
-        <div style={{ display: 'flex', marginTop: '35px' }}>
-          <Text
-            font="default"
-            size="24"
-            weight="500"
-            color="red"
-          >
-            {`You're on a ${num} day streak!`}
-          </Text>
-        </div>
+          color: 'white',
+          position: 'absolute',
+          left: '26%',
+          top: '68%',
+          fontSize: '50px',
+          fontWeight: '500',
+          textShadow: '3px 3px 4px rgba(0, 0, 0, 0.5)',
+        }}>{`You're on a ${num} day streak!`}</div>
       </div>
     ),
     intents: [
