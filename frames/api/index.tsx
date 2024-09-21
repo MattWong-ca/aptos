@@ -1,5 +1,5 @@
 import { serveStatic } from '@hono/node-server/serve-static'
-import { Button, Frog } from 'frog'
+import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
 import { neynar as neynarHub } from 'frog/hubs'
 import { neynar } from "frog/middlewares"
@@ -803,8 +803,31 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href={`http://localhost:3000/nfts`}>Mint today's NFT</Button.Link>,
-      <Button action="/bet">Next</Button>,
+      <TextInput placeholder="Enter your address" />,
+      <Button action="/minted">Mint today's NFT</Button>,
+      <Button action="/bet">Skip</Button>,
+    ],
+  })
+})
+
+app.frame('/minted', (c) => {
+  const { inputText } = c;
+  // Crossmint code here
+  console.log(inputText);
+
+  return c.res({
+    image: (
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+        <Image src={`/minted.png`} />
+      </div>
+    ),
+    intents: [
+      <Button action="/bet">Next</Button>
     ],
   })
 })
@@ -813,102 +836,17 @@ app.frame('/bet', (c) => {
   const interactor = c.var.interactor?.username;
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background: 'black',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%',
-          padding: '40px',
-          justifyContent: 'flex-start',
-        }}
-      >
-        {/* Title */}
-        <div style={{ display: 'flex', marginBottom: '60px', marginTop: '20px' }}>
-          <Text
-            font="default"
-            size="32"
-            weight="700"
-            color="white"
-          >
-            Wanna bet...
-          </Text>
-        </div>
-
-        {/* Two columns */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: '100%'
-        }}>
-          {/* Left column */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '45%'
-          }}>
-            <Text
-              font="default"
-              size="24"
-              weight="700"
-              color="white"
-            >
-              On Yourself
-            </Text>
-            <div
-              style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
-            >
-              <Text
-                font="default"
-                size="18"
-                weight="400"
-                color="white"
-              >
-                Play for 30 days in a row and earn PYUSD from a weighted pool!
-              </Text>
-            </div>
-          </div>
-
-          {/* Right column */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '45%'
-          }}>
-            <Text
-              font="default"
-              size="24"
-              weight="700"
-              color="white"
-            >
-              Against a Friend
-            </Text>
-            <div
-              style={{ display: 'flex', textAlign: 'center', padding: '10px', marginTop: '10px' }}
-            >
-              <Text
-                font="default"
-                size="18"
-                weight="400"
-                color="white"
-              >
-                Challenge a friend and set your own terms in PYUSD!
-
-              </Text>
-            </div>
-          </div>
-        </div>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+        <Image src={`/challenge.png`} />
       </div>
     ),
     intents: [
-      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Bet on Myself</Button.Link>,
-      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Bet a Friend</Button.Link>,
+      <Button.Link href={`http://localhost:3000/bet?interactor=${interactor}`}>Challenge</Button.Link>
     ],
   })
 })
