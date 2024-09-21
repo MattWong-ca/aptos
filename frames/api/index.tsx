@@ -125,6 +125,10 @@ app.frame('/translation', async (c) => {
           {
             question: "'Por favor' means 'Please' in Spanish.",
             correct_answer: "true"
+          },
+          {
+            question: "'Ni hao' means 'Thanks' in Spanish.",
+            correct_answer: "false"
           }
         ]
       };
@@ -681,7 +685,7 @@ app.frame('/q4', (c) => {
   }
 
   return c.res({
-    action: '/points',
+    action: '/q5',
     image: (
       <div style={{
         display: 'flex',
@@ -742,12 +746,85 @@ app.frame('/q4', (c) => {
   })
 })
 
+app.frame('/q5', (c) => {
+  const answerOptions = ['True', 'False'];
+  const { deriveState, buttonValue } = c;
+  const state = deriveState((previousState) => { });
+  const q5 = state.openaiResponse?.true_false_questions[2].question;
+
+  const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
+  if (buttonValue === correctQ4Answer) {
+    state.points += 100;
+  }
+
+  return c.res({
+    action: '/points',
+    image: (
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden'
+      }}>
+        <Image src={`/question.png`} />
+
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'absolute',
+          padding: '65px',
+        }}>
+          {/* Title */}
+          <div style={{ display: 'flex', marginBottom: '20px' }}>
+            <Text
+              font="default"
+              size="24"
+              weight="700"
+              color="white"
+            >
+              {q5}
+            </Text>
+          </div>
+
+          {/* Answer options */}
+          {answerOptions.map((option, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                marginBottom: '15px',
+                marginLeft: '20px',
+                borderRadius: '10px',
+                padding: '10px',
+                width: '100%',
+              }}
+            >
+              <Text
+                font="manrope"
+                weight="500"
+                size="18"
+                color="white"
+              >
+                {`${String.fromCharCode(97 + index)}. ${option}`}
+              </Text>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+    intents: [
+      <Button value="true">True</Button>,
+      <Button value="false">False</Button>,
+    ],
+  })
+})
+
 app.frame('/points', (c) => {
   const { deriveState, buttonValue } = c;
   const state = deriveState((previousState) => { });
 
-  const correctQ4Answer = state.openaiResponse?.true_false_questions[1].correct_answer;
-  if (buttonValue === correctQ4Answer) {
+  const correctQ5Answer = state.openaiResponse?.true_false_questions[2].correct_answer;
+  if (buttonValue === correctQ5Answer) {
     state.points += 100;
   }
   return c.res({
