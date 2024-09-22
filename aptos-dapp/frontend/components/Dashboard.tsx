@@ -1,7 +1,6 @@
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { TransferAPT } from './TransferAPT';
+import { Card, CardContent } from './ui/card';
 
 const Dashboard: React.FC = () => {
     const { connected } = useWallet();
