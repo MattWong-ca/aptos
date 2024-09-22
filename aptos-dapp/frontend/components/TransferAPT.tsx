@@ -8,15 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getAccountAPTBalance } from "@/view-functions/getAccountBalance";
 import { transferAPT } from "@/entry-functions/transferAPT";
-import { NeynarAPIClient } from '@neynar/nodejs-sdk';
 
 export function TransferAPT() {
   if (!process.env.NEXT_PUBLIC_NEYNAR_API_KEY || !process.env.NEXT_PUBLIC_SIGNER_UUID) {
     console.log("NEXT_PUBLIC_NEYNAR_API_KEY or NEXT_PUBLIC_SIGNER_UUID is not set");
   }
   const { account, signAndSubmitTransaction } = useWallet();
-  const neynarClient = new NeynarAPIClient(process.env.NEXT_PUBLIC_NEYNAR_API_KEY!);
-
   const queryClient = useQueryClient();
 
   const [aptBalance, setAptBalance] = useState<number>(0);
@@ -78,20 +75,36 @@ export function TransferAPT() {
         description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
       });
 
-      // Neynar bot
-      let betPost = `@${interactor} is betting ${transferAmount} APT that they'll have more points by end of week.\n\nWill @${friendUsername} accept? 👀`;
-      await neynarClient.publishCast(
-        process.env.NEXT_PUBLIC_SIGNER_UUID!,
-        betPost,
-        {
-          embeds: [{
-            url: `TO DO`
-          }]
-        }
-      );
+      // Neynar API call
+      const betPost = `@${interactor} is betting ${transferAmount} APT that they'll have more points by end of week.\n\nWill @${friendUsername} accept? 👀`;
+      await publishCast(betPost);
+
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const publishCast = async (text: string) => {
+    const response = await fetch('https://api.neynar.com/v2/farcaster/cast', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api_key': process.env.NEXT_PUBLIC_NEYNAR_API_KEY!,
+      },
+      body: JSON.stringify({
+        signer_uuid: process.env.NEXT_PUBLIC_SIGNER_UUID,
+        text: text,
+        // Add embeds if needed
+        // embeds: [{ url: 'TO DO' }],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to publish cast: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    console.log('Cast published:', result);
   };
 
   useEffect(() => {
