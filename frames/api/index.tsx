@@ -233,7 +233,7 @@ app.frame('/phrases', (c) => {
           }}
         >
           {/* First phrase */}
-          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'row',  }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
                 font="default"
@@ -255,7 +255,7 @@ app.frame('/phrases', (c) => {
           </div>
 
           {secondEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -278,7 +278,7 @@ app.frame('/phrases', (c) => {
           )}
 
           {thirdEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -300,7 +300,7 @@ app.frame('/phrases', (c) => {
             </div>
           )}
           {forthEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
