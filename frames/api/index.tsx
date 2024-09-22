@@ -881,7 +881,7 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href="http://localhost:5175/mint">Mint today's NFT</Button.Link>,
+      <Button.Link href="https://lingocast.vercel.app/mint">Mint today's NFT</Button.Link>,
       <Button action="/minted">Next</Button>
     ],
   })
@@ -923,7 +923,7 @@ app.frame('/bet', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href={`http://localhost:5175/challenge?interactor=${interactor}`}>Challenge</Button.Link>
+      <Button.Link href={`https://lingocast.vercel.app/challenge?interactor=${interactor}`}>Challenge</Button.Link>
     ],
   })
 })
