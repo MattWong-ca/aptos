@@ -8,6 +8,8 @@ import { handle } from 'frog/vercel'
 import dotenv from 'dotenv'
 dotenv.config()
 
+// Add Action URL: https://warpcast.com/~/add-cast-action?url=https://lingo-cast.vercel.app/api/
+
 const { Image, Text, vars } = createSystem({
   fonts: {
     default: [

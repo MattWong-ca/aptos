@@ -16,9 +16,9 @@ interface GameItem {
 }
 
 const gameItems: GameItem[] = [
-    { id: 1, image: '/streakfreeze.webp', title: 'Streak Freeze', subtitle: 'Protect your streak with a 1-day freeze', price: 5 },
-    { id: 2, image: '/ads.webp', title: 'Ad Removal', subtitle: 'Enjoy ad-free gaming for the next 30 days', price: 8 },
-    { id: 3, image: '/double.webp', title: 'Double Points', subtitle: 'Get double points for the next 7 days', price: 10 }
+    { id: 1, image: '/streakfreeze.webp', title: 'Streak Freeze', subtitle: 'Protect your streak with a 1-day freeze', price: 0.5 },
+    { id: 2, image: '/ads.webp', title: 'Ad Removal', subtitle: 'Enjoy ad-free gaming for the next 30 days', price: 1 },
+    { id: 3, image: '/double.webp', title: 'Double Points', subtitle: 'Get double points for the next 7 days', price: 2 }
 ];
 
 const Gamestore: React.FC = () => {
