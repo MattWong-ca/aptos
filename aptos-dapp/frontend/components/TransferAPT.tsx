@@ -81,11 +81,11 @@ export function TransferAPT() {
 
   return (
     <div className="flex flex-col gap-6" style={{ width: '80%' }}>
-      <h1 className="text-2xl font-bold mt-8">Challenge a Friend</h1>
-      <h4 className="text-md font-medium" style={{ marginTop: '-12px' }}>Think you'll have more points then a friend? Challenge them!</h4>
+      <h1 className="text-3xl font-bold mt-8">Challenge a Friend!</h1>
+      <h4 className="text-md font-medium" style={{ marginTop: '-18px' }}>Think you'll have more points then a friend? Challenge them!</h4>
 
-      <h4 className="text-md font-medium" style={{ marginTop: '8px' }}>Your APT balance: {(aptBalance / Math.pow(10, 8)).toFixed(2)}</h4>
-      <h4 className="text-md font-medium" style={{ marginTop: '12px' }}>Who are you challenging?</h4> 
+      <h4 className="text-md font-medium" style={{ marginTop: '0px' }}>Your APT balance: {(aptBalance / Math.pow(10, 8)).toFixed(2)}</h4>
+      <h4 className="text-md font-medium" style={{ marginTop: '2px' }}>Who are you challenging?</h4> 
       <Input style={{ marginTop: '-18px' }} disabled={!account} placeholder="0xMatt" onChange={(e) => setFriendUsername(e.target.value)} />
       <h4 className="text-md font-medium" style={{ marginTop: '1px' }}>How much?</h4> 
 

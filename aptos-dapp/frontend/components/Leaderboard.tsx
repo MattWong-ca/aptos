@@ -17,7 +17,7 @@ const Leaderboard: React.FC = () => {
                 <Card style={{ width: '950px', height: '550px', padding: '28px', paddingLeft: '50px', paddingRight: '50px', paddingTop: '40px' }}>
                     <CardContent className="flex flex-col pt-4">
                         <div className="flex flex-col mb-6" >
-                            <h1 className="text-2xl font-bold">Leaderboard</h1>
+                            <h1 className="text-3xl font-bold">Leaderboard</h1>
                             <h4 className="text-md font-medium" style={{ marginTop: '5px' }}>Weekly points leaders</h4>
                         </div>
                         <table className="w-full">

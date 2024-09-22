@@ -103,7 +103,8 @@ app.frame('/translation', async (c) => {
           "Hello": "Hola",
           "Goodbye": "Adiós",
           "Thank you": "Gracias",
-          "Please": "Por favor"
+          "Please": "Por favor",
+          "Good morning": "Buenos días"
         },
         multiple_choice_questions: [
           {
@@ -201,6 +202,9 @@ app.frame('/phrases', (c) => {
   const forthEntry = Object.entries(phraseTranslation)[3];
   const [english4, spanish4] = forthEntry;
 
+  const fifthEntry = Object.entries(phraseTranslation)[4];
+  const [english5, spanish5] = fifthEntry;
+
   return c.res({
     image: (
       <div style={{
@@ -228,8 +232,8 @@ app.frame('/phrases', (c) => {
             top: '12%'
           }}
         >
-
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
+          {/* First phrase */}
+          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
                 font="default"
@@ -249,8 +253,9 @@ app.frame('/phrases', (c) => {
               {`${spanish}`}
             </Text>
           </div>
+
           {secondEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -273,7 +278,7 @@ app.frame('/phrases', (c) => {
           )}
 
           {thirdEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -295,7 +300,7 @@ app.frame('/phrases', (c) => {
             </div>
           )}
           {forthEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -313,6 +318,28 @@ app.frame('/phrases', (c) => {
                 weight="400"
               >
                 {`${spanish4}`}
+              </Text>
+            </div>
+          )}
+          {fifthEntry && (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ display: 'flex', marginRight: '10px' }}>
+                <Text
+                  font="default"
+                  size="18"
+                  color="blue"
+                  weight="700"
+                >
+                  {`${english5}:`}
+                </Text>
+              </div>
+              <Text
+                font="default"
+                size="18"
+                color="blue"
+                weight="400"
+              >
+                {`${spanish5}`}
               </Text>
             </div>
           )}
@@ -880,9 +907,8 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <TextInput placeholder="Enter your address" />,
-      <Button action="/minted">Mint today's NFT</Button>,
-      <Button action="/bet">Skip</Button>,
+      <Button.Link href="http://localhost:5175/mint">Mint today's NFT</Button.Link>,
+      <Button action="/minted">Next</Button>
     ],
   })
 })
