@@ -6,6 +6,8 @@ import { aptosClient } from "@/utils/aptosClient";
 import { useQueryClient } from '@tanstack/react-query';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-react";
 import { MODULE_MINT_ADDRESS } from "@/constants";
+import HoverCard from './HoverCard';
+import { Button } from './ui/button';
 
 const Mint: React.FC = () => {
     const [nftCount, setNftCount] = useState(1);
@@ -32,21 +34,24 @@ const Mint: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center flex-col h-full mt-20">
+        <div className="flex items-center justify-center flex-col h-full mt-10">
             {connected ? (
-                <Card style={{ width: '950px', height: '550px', padding: '28px', paddingLeft: '50px', paddingRight: '50px', paddingTop: '40px' }}>
+                <Card style={{ width: '500px', height: '620px', padding: '28px', paddingLeft: '50px', paddingRight: '50px', paddingTop: '40px' }}>
                     <CardContent className="flex flex-col pt-4">
                         <div className="flex flex-col" >
-                            <h1 className="text-3xl font-bold">Mint</h1>
+                            <h1 className="text-3xl font-bold mb-6">Mint your NFT!</h1>
 
-                            <h4 className="text-md font-medium" style={{ marginTop: '5px' }}>A digital collection of your streaks, milestones, and in-game purchases!</h4>
-
-                            <button onClick={mintNft}>Mint NFT</button>
+                            <div className="flex flex-col justify-center items-center">
+                            <div style={{width: '100%' }}>
+                                <HoverCard/>
+                            </div>
+                            <Button onClick={mintNft} style={{ width: '100%' }} className="mx-4 mt-8">Mint</Button>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>
             ) : (
-                <Card style={{ width: '950px', height: '550px', padding: '28px', paddingLeft: '50px', paddingRight: '50px', paddingTop: '40px' }}>
+                <Card style={{ width: '500px', height: '550px', padding: '28px', paddingLeft: '50px', paddingRight: '50px', paddingTop: '40px' }}>
                     <CardContent className="flex flex-col pt-4">
                         <div className="flex flex-col" >
                             <h1 className="text-2xl font-bold">To get started, connect a wallet!</h1>
