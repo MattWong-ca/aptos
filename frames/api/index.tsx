@@ -954,6 +954,24 @@ app.frame('/bet', (c) => {
   })
 })
 
+app.frame('/challenged', (c) => {
+  return c.res({
+    image: (
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}>
+        <Image src={`/challenged.png`} />
+      </div>
+    ),
+    intents: [
+      <Button.Link href="https://warpcast.com/~/trending">Accept Challenge</Button.Link>
+    ],
+  })
+})
+
 app.castAction("/action", async (c) => {
   return c.frame({ path: '/' })
 },

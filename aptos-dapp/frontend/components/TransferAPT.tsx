@@ -10,9 +10,9 @@ import { getAccountAPTBalance } from "@/view-functions/getAccountBalance";
 import { transferAPT } from "@/entry-functions/transferAPT";
 
 export function TransferAPT() {
-  if (!process.env.NEXT_PUBLIC_NEYNAR_API_KEY || !process.env.NEXT_PUBLIC_SIGNER_UUID) {
-    console.log("NEXT_PUBLIC_NEYNAR_API_KEY or NEXT_PUBLIC_SIGNER_UUID is not set");
-  }
+  // if (!process.env.NEXT_PUBLIC_NEYNAR_API_KEY || !process.env.NEXT_PUBLIC_SIGNER_UUID) {
+  //   console.log("NEXT_PUBLIC_NEYNAR_API_KEY or NEXT_PUBLIC_SIGNER_UUID is not set");
+  // }
   const { account, signAndSubmitTransaction } = useWallet();
   const queryClient = useQueryClient();
 
@@ -95,7 +95,7 @@ export function TransferAPT() {
         signer_uuid: process.env.NEXT_PUBLIC_SIGNER_UUID,
         text: text,
         // Add embeds if needed
-        // embeds: [{ url: 'TO DO' }],
+        embeds: [{ url: 'http://localhost:5175/api/challenged' }],
       }),
     });
 
