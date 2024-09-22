@@ -202,8 +202,8 @@ app.frame('/phrases', (c) => {
   const forthEntry = Object.entries(phraseTranslation)[3];
   const [english4, spanish4] = forthEntry;
 
-  const fifthEntry = Object.entries(phraseTranslation)[4];
-  const [english5, spanish5] = fifthEntry;
+  // const fifthEntry = Object.entries(phraseTranslation)[4] || ['', ''];
+  // const [english5, spanish5] = fifthEntry;
 
   return c.res({
     image: (
@@ -321,7 +321,7 @@ app.frame('/phrases', (c) => {
               </Text>
             </div>
           )}
-          {fifthEntry && (
+          {true && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
@@ -330,7 +330,7 @@ app.frame('/phrases', (c) => {
                   color="blue"
                   weight="700"
                 >
-                  {`${english5}:`}
+                  {`Heyy:`}
                 </Text>
               </div>
               <Text
@@ -339,7 +339,7 @@ app.frame('/phrases', (c) => {
                 color="blue"
                 weight="400"
               >
-                {`${spanish5}`}
+                {`gmgm`}
               </Text>
             </div>
           )}
