@@ -8,14 +8,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getAccountAPTBalance } from "@/view-functions/getAccountBalance";
 import { transferAPT } from "@/entry-functions/transferAPT";
+import { NeynarAPIClient } from '@neynar/nodejs-sdk';
 
 export function TransferAPT() {
+  if (!process.env.NEXT_PUBLIC_NEYNAR_API_KEY || !process.env.NEXT_PUBLIC_SIGNER_UUID) {
+    console.log("NEXT_PUBLIC_NEYNAR_API_KEY or NEXT_PUBLIC_SIGNER_UUID is not set");
+  }
   const { account, signAndSubmitTransaction } = useWallet();
+  const neynarClient = new NeynarAPIClient(process.env.NEXT_PUBLIC_NEYNAR_API_KEY!);
+
   const queryClient = useQueryClient();
 
   const [aptBalance, setAptBalance] = useState<number>(0);
   const [friendUsername, setFriendUsername] = useState<string>();
   const [transferAmount, setTransferAmount] = useState<number>();
+  const [interactor, setInteractor] = useState<string>();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setInteractor(searchParams.get('interactor') || '');
+  }, []);
 
   const { data } = useQuery({
     queryKey: ["apt-balance", account?.address],
@@ -67,7 +79,16 @@ export function TransferAPT() {
       });
 
       // Neynar bot
-      // use friendUsername
+      let betPost = `@${interactor} is betting ${transferAmount} APT that they'll have more points by end of week.\n\nWill @${friendUsername} accept? 👀`;
+      await neynarClient.publishCast(
+        process.env.NEXT_PUBLIC_SIGNER_UUID!,
+        betPost,
+        {
+          embeds: [{
+            url: `TO DO`
+          }]
+        }
+      );
     } catch (error) {
       console.error(error);
     }
