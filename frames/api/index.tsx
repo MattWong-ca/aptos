@@ -103,8 +103,7 @@ app.frame('/translation', async (c) => {
           "Hello": "Hola",
           "Goodbye": "Adiós",
           "Thank you": "Gracias",
-          "Please": "Por favor",
-          "Thanks": "Yay",
+          "Please": "Por favor"
         },
         multiple_choice_questions: [
           {
@@ -202,9 +201,6 @@ app.frame('/phrases', (c) => {
   const forthEntry = Object.entries(phraseTranslation)[3];
   const [english4, spanish4] = forthEntry;
 
-  // const fifthEntry = Object.entries(phraseTranslation)[4] || ['', ''];
-  // const [english5, spanish5] = fifthEntry;
-
   return c.res({
     image: (
       <div style={{
@@ -233,7 +229,7 @@ app.frame('/phrases', (c) => {
           }}
         >
           {/* First phrase */}
-          <div style={{ display: 'flex', flexDirection: 'row',  }}>
+          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
             <div style={{ display: 'flex', marginRight: '10px' }}>
               <Text
                 font="default"
@@ -255,7 +251,7 @@ app.frame('/phrases', (c) => {
           </div>
 
           {secondEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -278,7 +274,7 @@ app.frame('/phrases', (c) => {
           )}
 
           {thirdEntry && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
                   font="default"
@@ -318,28 +314,6 @@ app.frame('/phrases', (c) => {
                 weight="400"
               >
                 {`${spanish4}`}
-              </Text>
-            </div>
-          )}
-          {true && (
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ display: 'flex', marginRight: '10px' }}>
-                <Text
-                  font="default"
-                  size="18"
-                  color="blue"
-                  weight="700"
-                >
-                  {`Heyy:`}
-                </Text>
-              </div>
-              <Text
-                font="default"
-                size="18"
-                color="blue"
-                weight="400"
-              >
-                {`gmgm`}
               </Text>
             </div>
           )}
