@@ -104,7 +104,7 @@ app.frame('/translation', async (c) => {
           "Goodbye": "Adiós",
           "Thank you": "Gracias",
           "Please": "Por favor",
-          "Good morning": "Buenos días"
+          "Thanks": "Yay",
         },
         multiple_choice_questions: [
           {
@@ -202,8 +202,8 @@ app.frame('/phrases', (c) => {
   const forthEntry = Object.entries(phraseTranslation)[3];
   const [english4, spanish4] = forthEntry;
 
-  // const fifthEntry = Object.entries(phraseTranslation)[4];
-  // const [english5, spanish5] = fifthEntry;
+  const fifthEntry = Object.entries(phraseTranslation)[4];
+  const [english5, spanish5] = fifthEntry;
 
   return c.res({
     image: (
@@ -321,7 +321,7 @@ app.frame('/phrases', (c) => {
               </Text>
             </div>
           )}
-          {/* {fifthEntry && (
+          {fifthEntry && (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ display: 'flex', marginRight: '10px' }}>
                 <Text
@@ -342,7 +342,7 @@ app.frame('/phrases', (c) => {
                 {`${spanish5}`}
               </Text>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     ),
