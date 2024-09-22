@@ -11,6 +11,7 @@ import { Button } from './ui/button';
 
 const Mint: React.FC = () => {
     const [nftCount, setNftCount] = useState(1);
+    const [minted, setMinted] = useState(false);
     const queryClient = useQueryClient();
     const { connected, account, signAndSubmitTransaction } = useWallet();
     const { data } = useGetCollectionData();
@@ -28,7 +29,8 @@ const Mint: React.FC = () => {
         const response = await signAndSubmitTransaction(
             mintNFT({ collectionId: collection.collection_id, amount: nftCount }),
         );
-        await aptosClient().waitForTransaction({ transactionHash: response.hash });
+        const confirmed = await aptosClient().waitForTransaction({ transactionHash: response.hash });
+        setMinted(confirmed.success);
         queryClient.invalidateQueries();
         setNftCount(1);
     };
@@ -45,7 +47,7 @@ const Mint: React.FC = () => {
                             <div style={{width: '100%' }}>
                                 <HoverCard/>
                             </div>
-                            <Button onClick={mintNft} style={{ width: '100%' }} className="mx-4 mt-8">Mint</Button>
+                            {minted ? <Button disabled style={{ width: '100%' }} className="mx-4 mt-8">Minted</Button> : <Button onClick={mintNft} style={{ width: '100%' }} className="mx-4 mt-8">Mint</Button>}
                             </div>
                         </div>
                     </CardContent>
