@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getAccountAPTBalance } from "@/view-functions/getAccountBalance";
 import { transferAPT } from "@/entry-functions/transferAPT";
+import { NEYNAR_API_KEY, SIGNER_UUID } from "@/constants";
 
 export function TransferAPT() {
   // if (!process.env.NEXT_PUBLIC_NEYNAR_API_KEY || !process.env.NEXT_PUBLIC_SIGNER_UUID) {
@@ -89,13 +90,12 @@ export function TransferAPT() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api_key': process.env.NEXT_PUBLIC_NEYNAR_API_KEY!,
+        'api_key': NEYNAR_API_KEY,
       },
       body: JSON.stringify({
-        signer_uuid: process.env.NEXT_PUBLIC_SIGNER_UUID,
+        signer_uuid: SIGNER_UUID,
         text: text,
-        // Add embeds if needed
-        embeds: [{ url: 'http://localhost:5175/api/challenged' }],
+        embeds: [{ url: 'https://lingo-cast.vercel.app/api/challenged' }],
       }),
     });
 
