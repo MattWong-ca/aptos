@@ -17,7 +17,8 @@ const Dashboard: React.FC = () => {
 
             const urls = await Promise.all(client.map(async (token) => {
                 console.log("URI", token.current_token_data?.token_uri);
-                if (token.current_token_data?.token_uri) {
+                // Some of the Crossmint IPFS links don't work
+                if (token.current_token_data?.token_uri && !token.current_token_data.token_uri.startsWith("ipfs")) {
                     const jsonUrl = token.current_token_data.token_uri;
                     const response = await fetch(jsonUrl);
                     if (response.ok) {
