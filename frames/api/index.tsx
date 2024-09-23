@@ -401,6 +401,7 @@ app.frame('/q1', async (c) => {
 
         <div style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           position: 'absolute',
           padding: '65px',
@@ -530,6 +531,7 @@ app.frame('/q2', (c) => {
 
         <div style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           position: 'absolute',
           padding: '65px',
@@ -659,6 +661,7 @@ app.frame('/q3', (c) => {
 
         <div style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           position: 'absolute',
           padding: '65px',
@@ -732,6 +735,7 @@ app.frame('/q4', (c) => {
 
         <div style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           position: 'absolute',
           padding: '65px',
@@ -805,6 +809,7 @@ app.frame('/q5', (c) => {
 
         <div style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           position: 'absolute',
           padding: '65px',
