@@ -5,10 +5,26 @@ import { neynar as neynarHub } from 'frog/hubs'
 import { neynar } from "frog/middlewares"
 import { createSystem } from 'frog/ui'
 import { handle } from 'frog/vercel'
+import OpenAI from "openai"
 import dotenv from 'dotenv'
 dotenv.config()
 
 // Add Action URL: https://warpcast.com/~/add-cast-action?url=https://lingo-cast.vercel.app/api/action
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
+
+const openAIPayload = `
+You're a translation bot that helps people learn Spanish, similar to Duolingo. In ONLY JSON, respond with:
+
+1. Translation of the text to Spanish
+2. Translations of the 4 most important words/phrases (eg. give me a dictionary like "Hello" --> "Hola")
+3. Generate 2 multiple choice questions (question in English, with 4 Spanish answers, no a/b/c/d in front of responses), and the correct answer (eg. it can be as simple as "Translate [word]" or "What does [word] mean")
+4. Generate 2 true/false questions similar to the multiple choice (eg. [phrase] means [phrase] in Spanish), and the correct answer as a string (eg. "true"/"false")
+
+Send me all of this in JSON. The sections should be "translation", "phrase_translation", "multiple_choice_questions", and "true_false_questions"
+
+Here's the text:
+`;
 
 const { Image, Text, vars } = createSystem({
   fonts: {
@@ -89,51 +105,50 @@ app.frame('/translation', async (c) => {
 
   const state = await deriveState(async (previousState) => {
     if (!previousState.openaiResponse) {
-      // Commented out OpenAI API call
-      // const completion = await openai.chat.completions.create({
-      //   messages: [
-      //     { role: "system", content: openAIPayload + `\n${castText}` },
-      //   ],
-      //   model: "gpt-3.5-turbo",
-      // });
-      // previousState.openaiResponse = JSON.parse(completion.choices[0].message.content!);
-
-      // Dummy response
-      previousState.openaiResponse = {
-        translation: "Esta es una traducción de ejemplo.",
-        phrase_translation: {
-          "Hello": "Hola",
-          "Goodbye": "Adiós",
-          "Thank you": "Gracias",
-          "Please": "Por favor"
-        },
-        multiple_choice_questions: [
-          {
-            question: "What is 'Hello' in Spanish?",
-            answers: ["Hola", "Adiós", "Gracias", "Por favor"],
-            correct_answer: "Hola"
-          },
-          {
-            question: "Translate 'Thank you' to Spanish:",
-            answers: ["Por favor", "Gracias", "Hola", "Adiós"],
-            correct_answer: "Gracias"
-          }
+      const completion = await openai.chat.completions.create({
+        messages: [
+          { role: "system", content: openAIPayload + `\n${castText}` },
         ],
-        true_false_questions: [
-          {
-            question: "'Adiós' means 'Hello' in Spanish.",
-            correct_answer: "false"
-          },
-          {
-            question: "'Por favor' means 'Please' in Spanish.",
-            correct_answer: "true"
-          },
-          {
-            question: "'Ni hao' means 'Thanks' in Spanish.",
-            correct_answer: "false"
-          }
-        ]
-      };
+        model: "gpt-3.5-turbo",
+      });
+      previousState.openaiResponse = JSON.parse(completion.choices[0].message.content!);
+
+      // Uncomment dummy response for testing purposes
+      // previousState.openaiResponse = {
+      //   translation: "Esta es una traducción de ejemplo.",
+      //   phrase_translation: {
+      //     "Hello": "Hola",
+      //     "Goodbye": "Adiós",
+      //     "Thank you": "Gracias",
+      //     "Please": "Por favor"
+      //   },
+      //   multiple_choice_questions: [
+      //     {
+      //       question: "What is 'Hello' in Spanish?",
+      //       answers: ["Hola", "Adiós", "Gracias", "Por favor"],
+      //       correct_answer: "Hola"
+      //     },
+      //     {
+      //       question: "Translate 'Thank you' to Spanish:",
+      //       answers: ["Por favor", "Gracias", "Hola", "Adiós"],
+      //       correct_answer: "Gracias"
+      //     }
+      //   ],
+      //   true_false_questions: [
+      //     {
+      //       question: "'Adiós' means 'Hello' in Spanish.",
+      //       correct_answer: "false"
+      //     },
+      //     {
+      //       question: "'Por favor' means 'Please' in Spanish.",
+      //       correct_answer: "true"
+      //     },
+      //     {
+      //       question: "'Ni hao' means 'Thanks' in Spanish.",
+      //       correct_answer: "false"
+      //     }
+      //   ]
+      // };
     }
   });
 
