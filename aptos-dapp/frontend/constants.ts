@@ -4,3 +4,5 @@ export const COLLECTION_ADDRESS = import.meta.env.VITE_COLLECTION_ADDRESS;
 export const MODULE_MINT_ADDRESS = import.meta.env.VITE_MODULE_MINT_ADDRESS;
 export const NEYNAR_API_KEY = import.meta.env.VITE_NEYNAR_API_KEY;
 export const SIGNER_UUID = import.meta.env.VITE_SIGNER_UUID;
+export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+export const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY;

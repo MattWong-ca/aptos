@@ -1,15 +1,24 @@
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { useGetCollectionData } from '@/hooks/useGetCollectionData';
 import { aptosClient } from "@/utils/aptosClient";
 import { useQueryClient } from '@tanstack/react-query';
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-react";
-import { MODULE_MINT_ADDRESS } from "@/constants";
+import { MODULE_MINT_ADDRESS, SUPABASE_URL, SUPABASE_KEY } from "@/constants";
 import HoverCard from './HoverCard';
 import { Button } from './ui/button';
+import { createClient } from '@supabase/supabase-js';
 
 const Mint: React.FC = () => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const [interactor, setInteractor] = useState<string>();
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setInteractor(searchParams.get('interactor') || '');
+    }, []);
+
     const [nftCount, setNftCount] = useState(1);
     const [minted, setMinted] = useState(false);
     const queryClient = useQueryClient();
@@ -31,6 +40,14 @@ const Mint: React.FC = () => {
         );
         const confirmed = await aptosClient().waitForTransaction({ transactionHash: response.hash });
         setMinted(confirmed.success);
+
+        await supabase
+            .from('lingo')
+            .update({
+                address: account.address
+            })
+            .eq('username', interactor);
+
         queryClient.invalidateQueries();
         setNftCount(1);
     };
@@ -44,10 +61,10 @@ const Mint: React.FC = () => {
                             <h1 className="text-3xl font-bold mb-6">Mint your NFT!</h1>
 
                             <div className="flex flex-col justify-center items-center">
-                            <div style={{width: '100%' }}>
-                                <HoverCard/>
-                            </div>
-                            {minted ? <Button disabled style={{ width: '100%' }} className="mx-4 mt-8">Minted</Button> : <Button onClick={mintNft} style={{ width: '100%' }} className="mx-4 mt-8">Mint</Button>}
+                                <div style={{ width: '100%' }}>
+                                    <HoverCard />
+                                </div>
+                                {minted ? <Button disabled style={{ width: '100%' }} className="mx-4 mt-8">Minted</Button> : <Button onClick={mintNft} style={{ width: '100%' }} className="mx-4 mt-8">Mint</Button>}
                             </div>
                         </div>
                     </CardContent>

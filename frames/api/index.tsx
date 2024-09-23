@@ -854,14 +854,25 @@ app.frame('/q5', (c) => {
   })
 })
 
-app.frame('/points', (c) => {
+app.frame('/points', async (c) => {
   const { deriveState, buttonValue } = c;
+  const interactorUsername = c.var.interactor?.username;
   const state = deriveState((previousState) => { });
 
   const correctQ5Answer = state.openaiResponse?.true_false_questions[2].correct_answer;
   if (buttonValue === correctQ5Answer) {
     state.points += 100;
   }
+
+  await supabase
+    .from('lingo')
+    .update({ 
+      weekly_points: state.points,
+      streak: supabase.rpc('COALESCE(streak, 0) + 1'),
+      daily_count: supabase.rpc('COALESCE(streak, 0) + 1')
+    })
+    .eq('username', interactorUsername);
+
   return c.res({
     image: (
       <div style={{
@@ -893,6 +904,7 @@ app.frame('/points', (c) => {
 })
 
 app.frame('/streak', (c) => {
+  const interactor = c.var.interactor?.username;
   const num = 1;
   return c.res({
     image: (
@@ -915,7 +927,7 @@ app.frame('/streak', (c) => {
       </div>
     ),
     intents: [
-      <Button.Link href="https://lingocast.vercel.app/mint">Mint today's NFT</Button.Link>,
+      <Button.Link href={`https://lingocast.vercel.app/mint?interactor=${interactor}`}>Mint today's NFT</Button.Link>,
       <Button action="/minted">Next</Button>
     ],
   })
