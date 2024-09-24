@@ -37,6 +37,11 @@ On the [web app](https://lingocast.vercel.app/dashboard), you can:
   
 <img width="1440" alt="Screenshot 2024-09-24 at 3 21 42 PM" src="https://github.com/user-attachments/assets/467050da-41ad-44d4-b529-45781b22fbb3">
 
+# 🗺️ Next Steps
+1. **Passkeys**: in the future, integrating Passkeys will enable users to create an onchain account associated with their WebAuthn credential and sign transactions with it. This makes the UX even smoother with biometrics!
+2. **Frames Enhancements**: sometimes the Farcaster frames take a while to load due to the OpenAI requests (and potentially the frequent images), so these will be optimized to provide a faster UX for users.
+3. **Sharing Features**: 1-click sharing features of milestones and streaks will create viral loops, which helps with growing the number of users. This will bring more of Farcaster's crypto-native community onto Aptos!
+
 # 📱 Follow Lingocaster!
 Follow [Lingocaster](https://warpcast.com/lingocaster) on Warpcast for more updates!
 
