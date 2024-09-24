@@ -5,7 +5,6 @@ import { TransferAPT } from './TransferAPT';
 
 const Challenge: React.FC = () => {
     const { connected } = useWallet();
-
     return (
         <div className="flex items-center justify-center flex-col h-full mt-20">
             {connected ? (
