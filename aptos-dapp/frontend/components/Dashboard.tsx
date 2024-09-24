@@ -4,14 +4,14 @@ import { Card, CardContent } from './ui/card';
 import { aptosClient } from '@/utils/aptosClient';
 
 const Dashboard: React.FC = () => {
-    const { connected, account } = useWallet();
+    const { connected } = useWallet();
 
     const [imageUrls, setImageUrls] = useState<string[]>([]);
 
     const fetchNFTs = async () => {
         try {
             const client = await aptosClient().getAccountOwnedTokens({
-                accountAddress: account?.address!
+                accountAddress: "0x8ab10f7c9d5ffefd13e48a6ca3408cc82956b355434141b054461ba1222cb23f"
             });
             console.log(client);
 
