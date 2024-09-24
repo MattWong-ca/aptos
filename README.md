@@ -34,7 +34,8 @@ On the [web app](https://lingocast.vercel.app/dashboard), you can:
 - buy in-game items like streak freezes, ad removal, & 2x points on the Game Store
 - view the weekly points leaders on the Leaderboard
 - challenge a friend with APT in Challenge a Friend
-
+  
+<img width="1440" alt="Screenshot 2024-09-24 at 3 21 42 PM" src="https://github.com/user-attachments/assets/467050da-41ad-44d4-b529-45781b22fbb3">
 
 # 📱 Follow Lingocaster!
 Follow [Lingocaster](https://warpcast.com/lingocaster) on Warpcast for more updates!
