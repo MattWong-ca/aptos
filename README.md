@@ -1,5 +1,5 @@
 # 🦉 Lingocaster
-Demo video: 
+Demo video: https://youtu.be/x7ND0SIYyh0
 <br/>
 Warpcast: https://warpcast.com/lingocaster
 <br/>
@@ -8,14 +8,16 @@ Cast Action: [install link](https://warpcast.com/~/add-cast-action?url=https://l
 Web app: [link](https://lingocast.vercel.app/dashboard)
 <br/>
 
-<img width="1290" alt="intro" src="https://github.com/user-attachments/assets/4b95bdf8-9a6a-4d6d-ae40-9707f19567d4">
+<img width="1295" alt="lingocaster" src="https://github.com/user-attachments/assets/fd2ee0cc-5e9a-429b-bc35-709b70416c64">
 
 # 🗣️ About
-Lingocaster is a language learning game on Farcaster. Learn a new language by translating posts from your social feed! The game itself is built using Farcaster frames triggered by this [cast action](https://warpcast.com/~/add-cast-action?url=https://lingo-cast.vercel.app/api/action). We use AI to create translations + quiz questions for users, who can then play for daily points and compete on the leaderboard. 
-
-Using AI, we generate translations + quiz questions from any post, which leads to personalized learning integrated into the real-world contexts of your own social feed. By building on Farcaster, we make language learning more social + cultural, and it  also helps get more users through viral loops, Frames, and more. By leveraging Aptos, we ensure that users will have a fast + efficient UX when minting NFT streaks + buying in-game items, making this scalable to millions.
+Lingocaster is a language learning game on Farcaster. Learn a new language by translating posts from your social feed! The game itself is built using Farcaster frames triggered by this [cast action](https://warpcast.com/~/add-cast-action?url=https://lingo-cast.vercel.app/api/action). 
 
 <img width="1288" alt="g" src="https://github.com/user-attachments/assets/da208a2b-c72c-4e0e-98f2-6dea82deb357">
+<br/>
+<br/>
+We use AI to create translations + quiz questions from any post, which leads to personalized learning integrated into the real-world contexts of your own social feed. By building on Farcaster, we make language learning more social + cultural, and it also helps get more users through viral loops, Frames, and more. By leveraging Aptos, we ensure that users will have a fast + efficient UX when minting NFT streaks + buying in-game items, making this scalable to millions.
+
 
 ### Problems that Lingocaster solves:
 <img width="1288" alt="f" src="https://github.com/user-attachments/assets/da1a32de-1161-42c3-93a6-830316b0faa1">
