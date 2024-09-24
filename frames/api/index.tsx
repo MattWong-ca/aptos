@@ -939,10 +939,6 @@ app.frame('/streak', (c) => {
 })
 
 app.frame('/minted', (c) => {
-  const { inputText } = c;
-  // Crossmint code here
-  console.log(inputText);
-
   return c.res({
     image: (
       <div style={{
