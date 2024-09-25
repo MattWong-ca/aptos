@@ -41,6 +41,7 @@ On the [web app](https://lingocast.vercel.app/dashboard), you can:
 
 # 🛠️ Tech Stack
 - ⛓️ **Aptos**: deployed Move contracts for NFT streaks, in-game purchases, & challenge bets.
+- 🖼️ **Irys**: storing NFT files + metadata
 - 🐸 **Frog**: framework used for building Farcaster frames.
 - 🪐 **Neynar**: used their SDK for fetching post text + building @Lingocaster bot.
 - ✨ **OpenAI**: used for generating translations + quiz questions.
