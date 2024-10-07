@@ -67,7 +67,7 @@ type State = {
 // Initialize the Frog app with the State type and initial state
 export const app = new Frog<{ State: State }>({
   title: 'Lingocaster',
-  hub: neynarHub({ apiKey: 'NEYNAR_FROG_FM' }),
+  hub: neynarHub({ apiKey: process.env.NEYNAR_API_KEY! }),
   ui: { vars },
   assetsPath: "/",
   basePath: "/api",
@@ -77,7 +77,7 @@ export const app = new Frog<{ State: State }>({
   }
 }).use(
   neynar({
-    apiKey: "NEYNAR_FROG_FM",
+    apiKey: process.env.NEYNAR_API_KEY!,
     features: ["interactor", "cast"],
   })
 );
